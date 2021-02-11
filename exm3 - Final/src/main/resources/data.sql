@@ -1,0 +1,1 @@
+INSERT INTO usuario(username, fullname, password, birthday, pets, status, role) VALUES('jcrt', 'Julio Cesar Rosa Trindade', '123123', '1987-08-05', 2, false, 'ADMIN')

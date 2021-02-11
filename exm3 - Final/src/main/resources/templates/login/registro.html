@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+    <script th:href="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:href="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+    <link
+      th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="container text-center">
+    <div>
+      <h1>Registro</h1>
+    </div>
+    <form
+      th:action="@{'/registro'}"
+      method="POST"
+      class="form container"
+      th:object="${registro}"
+    >
+      <div class="form-group col-md-4 offset-md-4">
+        <label>
+          User email:
+          <input
+            type="text"
+            th:field="*{usermail}"
+            th:classappend="${#fields.hasErrors('usermail') ? 'is-invalid' : ''}"
+            class="form-control"
+          />
+        </label>
+        <div
+          class="text-danger"
+          th:if="${#fields.hasErrors('usermail')}"
+          th:errors="*{usermail}"
+        ></div>
+      </div>
+      <div class="form-group col-md-4 offset-md-4">
+        <label>
+          Fullname:
+          <input
+            type="text"
+            th:field="*{fullname}"
+            th:classappend="${#fields.hasErrors('fullname') ? 'is-invalid' : ''}"
+            class="form-control"
+          />
+          <div
+            class="text-danger"
+            th:if="${#fields.hasErrors('fullname')}"
+            th:errors="*{fullname}"
+          ></div>
+        </label>
+      </div>
+      <div class="form-group col-md-4 offset-md-4">
+        <label>
+          Password:
+          <input
+            type="password"
+            th:field="*{password}"
+            th:classappend="${#fields.hasErrors('password') ? 'is-invalid' : ''}"
+            class="form-control"
+          />
+        </label>
+        <div
+          class="text-danger"
+          th:if="${#fields.hasErrors('password')}"
+          th:errors="*{password}"
+        ></div>
+      </div>
+      <div class="form-group col-md-4 offset-md-4">
+        <label>
+          Retype Password:
+          <input
+            type="password"
+            th:field="*{password2}"
+            th:classappend="${#fields.hasErrors('password2') ? 'is-invalid' : ''}"
+            class="form-control"
+          />
+        </label>
+        <div
+          class="text-danger"
+          th:if="${#fields.hasErrors('password2')}"
+          th:errors="*{password2}"
+        ></div>
+      </div>
+      <div class="form-group col-md-4 offset-md-4">
+        <label for="birthday">
+          Birthday:
+          <input
+            type="text"
+            th:field="*{birthday}"
+            th:classappend="${#fields.hasErrors('birthday') ? 'is-invalid' : ''}"
+            class="form-control"
+          />
+        </label>
+        <div
+          class="text-danger"
+          th:if="${#fields.hasErrors('birthday')}"
+          th:errors="*{birthday}"
+        ></div>
+      </div>
+      <div class="form-group col-md-4 offset-md-4">
+        <label for="pets">
+          Pets:
+          <input
+            type="number"
+            th:field="*{pets}"
+            th:classappend="${#fields.hasErrors('pets') ? 'is-invalid' : ''}"
+            class="form-control"
+          />
+        </label>
+        <div
+          class="text-danger"
+          th:if="${#fields.hasErrors('pets')}"
+          th:errors="*{pets}"
+        ></div>
+      </div>
+      <div class="form-group col-md-4 offset-md-4">
+        <div class="radio" th:each="item: ${status}">
+          <label>
+            <input
+              type="radio"
+              th:field="*{status}"
+              th:classappend="${#fields.hasErrors('status') ? 'is-invalid' : ''}"
+              th:value="${item.value}"
+              th:text="${item.key}"
+            />
+          </label>
+        </div>
+        <div
+          class="text-danger"
+          th:if="${#fields.hasErrors('status')}"
+          th:errors="*{status}"
+        ></div>
+      </div>
+      <div class="form-group col-md-2 offset-md-5">
+        <button
+          type="submit"
+          value="Login"
+          class="form-control btn btn-success"
+        >
+          Registrar
+        </button>
+      </div>
+    </form>
+  </body>
+</html>

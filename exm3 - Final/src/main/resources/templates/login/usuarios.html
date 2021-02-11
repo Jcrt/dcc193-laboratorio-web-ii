@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="www.thymeleaf.com">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script th:href="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+  <script th:href="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+  <link
+    th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"
+    rel="stylesheet" 
+  />
+  <title>Lista de usuários</title>
+</head>
+<body>
+  <main th:fragment="conteudo">
+    <div class="page-header">
+      <h1>
+        Lista de usuários
+      </h1>
+    </div>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Nome de usuário</th>
+          <th>Nome completo</th>
+          <th>Data de nascimento</th>
+          <th>Pets</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="usuario: ${usuarios}">
+          <td th:text="${usuario.usermail}"></td>
+          <td th:text="${usuario.fullname}"></td>
+          <td th:text="${usuario.pets}"></td>
+          <td th:text="${usuario.birthday}"></td>
+          <td th:text="${usuario.status}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
